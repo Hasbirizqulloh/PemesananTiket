@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Berangkat Jaya Travel</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=FontName" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header" style="border: 1px solid black; border-radius: 7px">
+        <h1>Travel Berangkat Jaya</h1>
+      </div>
+      <p>Pemesanan Tiket Travel</p>
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" placeholder="Masukkan nama" />
+
+      <label for="tujuan">Tujuan:</label>
+      <select id="tujuan" onchange="updateHargaTiket()">
+        <option value="" disabled selected>-- Pilih Tujuan</option>
+        <option value="Jakarta" data-price="150000">Jakarta</option>
+        <option value="Surabaya" data-price="200000">Surabaya</option>
+        <option value="Bali" data-price="100000">Bali</option>
+      </select>
+
+      <label for="hargaTiket">Harga Tiket:</label>
+      <input type="text" id="hargaTiket" placeholder="Harga tiket per orang" disabled />
+
+      <label for="jumlahTiket">Jumlah Tiket:</label>
+      <select id="jumlahTiket">
+        <option value="" disabled selected>-- Pilih Jumlah Tiket</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <div class="members">
+        <label for="member">Apakah Anda Member ? </label>
+        <input type="checkbox" id="member" onchange="updateDiskon()" /> Ya
+        <span id="diskonLabel"></span>
+      </div>
+
+      <label for="diskon">Diskon:</label>
+      <input type="text" id="diskon" placeholder="Diskon (dalam persen)" disabled />
+
+      <label for="totalBayar">Total Bayar:</label>
+      <input type="text" id="totalBayar" disabled />
+
+      <button onclick="hitungTotalBayar()">Hitung Total Bayar</button>
+    </div>
+    <script>
+      function updateHargaTiket() {
+        const tujuanSelect = document.getElementById('tujuan');
+        const hargaTiketInput = document.getElementById('hargaTiket');
+        const selectedOption = tujuanSelect.options[tujuanSelect.selectedIndex];
+        const price = selectedOption.getAttribute('data-price');
+        hargaTiketInput.value = price;
+      }
+
+      function updateDiskon() {
+        const memberCheckbox = document.getElementById('member');
+        const diskonInput = document.getElementById('diskon');
+        const diskonLabel = document.getElementById('diskonLabel');
+
+        if (memberCheckbox.checked) {
+          diskonInput.value = '10%';
+          diskonLabel.textContent = ' (Diskon 10%)';
+        } else {
+          diskonInput.value = '';
+          diskonLabel.textContent = '';
+        }
+      }
+
+      function hitungTotalBayar() {
+        const hargaTiket = parseFloat(document.getElementById('hargaTiket').value);
+        const jumlahTiket = parseInt(document.getElementById('jumlahTiket').value);
+        const diskon = parseFloat(document.getElementById('diskon').value);
+
+        let totalBayar = hargaTiket * jumlahTiket;
+
+        if (!isNaN(diskon) && diskon > 0) {
+          totalBayar -= totalBayar * (diskon / 100);
+        }
+
+        document.getElementById('totalBayar').value = 'Rp. ' + totalBayar;
+      }
+    </script>
+  </body>
+</html>

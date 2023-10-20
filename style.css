@@ -1,0 +1,89 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #6d46eb;
+  text-align: center;
+}
+
+.container {
+  width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #888;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type='text'] {
+  width: 378px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.members {
+  margin-top: 15px;
+}
+
+.members label {
+  text-align: center;
+}
+
+#totalBayar {
+  font-weight: bold;
+  background-color: #f5f5f5;
+  padding: 10px; /* Sesuaikan tinggi teks input untuk keseragaman */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 378px;
+}
+
+button {
+  background-color: red;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #00589e;
+}
+
+.container select,
+.container input[type='text'] {
+  padding: 10px;
+}
+
+.container select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: url('https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@v2.0.0/assets/flags/png/id.png') no-repeat right #f5f5f5;
+  background-size: 20px 12px;
+}
